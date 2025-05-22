@@ -16,6 +16,9 @@ const teacher3: Teacher = {
 
 console.log(teacher3);
 
+
+
+
 // should print
 // Object
 // contract: false
