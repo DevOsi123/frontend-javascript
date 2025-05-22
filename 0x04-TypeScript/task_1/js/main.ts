@@ -28,3 +28,40 @@ function printTeacher(firstName: string, lastName: string): string {
 }
 
 console.log(printTeacher("john","Doe"))
+
+// Step 1: Define the interface
+
+interface isStudent{
+  firstName:string
+  lastName:string
+  workOnHomework():string
+  displayName():string
+}
+
+// Step 2: Create the class
+
+class StudentClass implements  isStudent{
+    firstName: string;
+    lastName: string;
+
+      // Constructor to initialize firstName and lastName
+      constructor(firstName: string, lastName: string) {
+        this.firstName = firstName
+        this.lastName = lastName
+    }
+
+        // Method to indicate the student is working on homework
+          workOnHomework():string{
+      return "Currently working"
+    }
+
+// Method to display the student's first name
+    displayName():string{
+      return `${this.firstName}`
+}
+
+}
+
+const student1 = new StudentClass("John", "Doe");
+console.log(student1.workOnHomework())
+console.log(student1.displayName())
