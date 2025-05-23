@@ -43,18 +43,38 @@ class Teacher implements TeacherInterface{
   }
 }
 
-
-function createEmployee(salary:number | string):string{
- if(typeof salary === "number" && salary){
-  return "Teacher"
+// a function which returns teacher or director  when  you put in number or number in string form
+function createEmployee(salary: number | string): Teacher | Director{
+ if(typeof salary === "number" && salary < 500){
+  return new Teacher()
  }
  else{
-  return  "Director";
+  return  new Director()
  }
 }
 
-console.log(createEmployee(200));
+function isDirector(employee:Teacher | Director) : employee is Director{
+return (employee as Director).workDirectorTasks !== undefined;
 
-console.log(createEmployee(1000));
+}
 
-console.log(createEmployee('$500'));
+//a function it accepts employee as an argument
+// if the employee is a Director, it will call workDirectorTasks
+// if the employee is a Teacher, it will call workTeacherTasks
+
+function executeWork(employee: Director | Teacher): string {
+  if (isDirector(employee)){
+    console.log(employee.workDirectorTasks()) ;
+  }
+  else{
+    console.log(employee.workTeacherTasks()) ;
+  }
+
+  return "Unknown employee role";
+}
+
+
+console.log(executeWork(createEmployee(200)));
+
+console.log(executeWork(createEmployee(1000)))
+
