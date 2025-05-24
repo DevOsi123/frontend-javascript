@@ -61,7 +61,6 @@ return (employee as Director).workDirectorTasks !== undefined;
 //a function it accepts employee as an argument
 // if the employee is a Director, it will call workDirectorTasks
 // if the employee is a Teacher, it will call workTeacherTasks
-
 function executeWork(employee: Director | Teacher): string {
   if (isDirector(employee)){
     console.log(employee.workDirectorTasks()) ;
@@ -74,7 +73,18 @@ function executeWork(employee: Director | Teacher): string {
 }
 
 
-console.log(executeWork(createEmployee(200)));
+type Subjects = "Math" |"History" ;
+function teachClass(todayClass:Subjects){
+  if(todayClass === "Math"){
+    console.log("Teaching Math");
+  }
+  else if(todayClass === "History"){
+    console.log("Teaching History");
+  }
+  }
 
-console.log(executeWork(createEmployee(1000)))
+ 
 
+  teachClass("Math")
+  teachClass("History")
+ 
